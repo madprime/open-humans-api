@@ -60,9 +60,9 @@ def oauth2_token_exchange(client_id, client_secret, redirect_uri,
             'grant_type': 'refresh_token',
             'refresh_token': refresh_token,
         }
+    token_url = urlparse.urljoin(base_url, '/oauth2/token/')
     req = requests.post(
-        '{}/oauth2/token/'.format(base_url),
-        data=data,
+        token_url, data=data,
         auth=requests.auth.HTTPBasicAuth(client_id, client_secret))
     data = req.json()
     return data
