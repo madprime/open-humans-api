@@ -31,6 +31,14 @@ class APITest(TestCase):
             'https://www.openhumans.org/direct-sharing/projects/'
             'oauth2/authorize/?client_id=abcd1234&response_type=code')
 
+    def test_oauth2_auth_url__with_client_id_and_redirect_uri(self):
+        auth_url = oauth2_auth_url(client_id='abcd1234',
+                                   redirect_uri='http://127.0.0.1:5000/auth/')
+        assert auth_url == (
+            'https://www.openhumans.org/direct-sharing/projects/'
+            'oauth2/authorize/?client_id=abcd1234&response_type=code'
+            '&redirect_uri=http%3A%2F%2F127.0.0.1%3A5000%2Fauth%2F')
+
     @my_vcr.use_cassette()
     def test_oauth2_token_exchange__valid_code(self):
         data = oauth2_token_exchange(

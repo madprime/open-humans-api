@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import json
 import logging
 import os
@@ -28,12 +29,12 @@ def oauth2_auth_url(redirect_uri=None, client_id=None, base_url=OH_BASE_URL):
             raise SettingsError(
                 "Client ID not provided! Provide client_id as a parameter, "
                 "or set OHAPI_CLIENT_ID in your environment.")
-    params = {
-        'client_id': client_id,
-        'response_type': 'code'
-    }
+    params = OrderedDict([
+        ('client_id', client_id),
+        ('response_type', 'code'),
+    ])
     if redirect_uri:
-        params.update({'redirect_uri': redirect_uri})
+        params['redirect_uri'] = redirect_uri
 
     auth_url = urlparse.urljoin(
         base_url, '/direct-sharing/projects/oauth2/authorize/?{}'.format(
@@ -192,4 +193,4 @@ def message(subject, message, access_token, all_members=False, project_member_id
         requests.post(url, data={'all_members': all_members,
                      'project_member_ids': project_member_ids,
                      'subject': subject,
-                     'message': message}) 
+                     'message': message})
