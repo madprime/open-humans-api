@@ -22,6 +22,11 @@ parameter_defaults = {
 _config_params_api.py is not usually used. It's to use valid codes and tokens
 for developers that wish to record new cassettes. DO NOT COMMIT IT TO GIT!
 
+To get started, do:
+cp _config_params_api.py.example _config_params_api.py
+
+Edit _config_params_api.py to define valid secret codes, tokens, etc.
+
 Run a specific function to (re)create an associated cassette, e.g.:
 pytest ohapi/tests/test_api.py::APITest::test_oauth2_token_exchange__valid_code
 
