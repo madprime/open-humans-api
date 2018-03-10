@@ -19,8 +19,10 @@ parameter_defaults = {
 }
 
 """
-_config_params_api.py is not usually used. It's to use valid codes and tokens
-for developers that wish to record new cassettes. DO NOT COMMIT IT TO GIT!
+_config_params_api.py is not usually present.  You can create this to use valid
+codes and tokens if you wish to record new cassettes. If present, this file is
+used to overwrite `parameter_defaults` with the (hopefully valid, but secret)
+items in the file. DO NOT COMMIT IT TO GIT!
 
 To get started, do:
 cp _config_params_api.py.example _config_params_api.py
