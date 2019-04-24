@@ -138,7 +138,7 @@ def download(directory, master_token=None, member=None, access_token=None,
                                  excludelist=excludelist,
                                  project_data=project_data)
     else:
-        member_data = exchange_oauth2_member(access_token)
+        member_data = exchange_oauth2_member(access_token, all_files=True)
         if project_data:
             OHProject.download_member_project_data(member_data=member_data,
                                                    target_member_dir=directory,

@@ -8,7 +8,7 @@ import os
 import arrow
 from humanfriendly import parse_size
 
-from .api import delete_file, get_all_results, upload_aws
+from .api import delete_file, get_all_results, get_page, upload_aws
 from .utils_fs import download_file, validate_metadata
 
 MAX_SIZE_DEFAULT = '128m'
@@ -46,8 +46,16 @@ class OHProject:
         url = ('https://www.openhumans.org/api/direct-sharing/project/'
                'members/?access_token={}'.format(self.master_access_token))
         results = get_all_results(url)
-        self.project_data = {result['project_member_id']: result for
-                             result in results}
+        self.project_data = dict()
+        for result in results:
+            self.project_data[result['project_member_id']] = result
+            if len(result['data']) < result['file_count']:
+                member_data = get_page(result['exchange_member'])
+                final_data = member_data['data']
+                while member_data['next']:
+                    member_data = get_page(member_data['next'])
+                    final_data = final_data + member_data['data']
+                self.project_data[result['project_member_id']]['data'] = final_data
         return self.project_data
 
     @classmethod
