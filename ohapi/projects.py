@@ -58,7 +58,8 @@ class OHProject:
                 while member_data['next']:
                     member_data = get_page(member_data['next'])
                     final_data = final_data + member_data['data']
-                self.project_data[result['project_member_id']]['data'] = final_data
+                self.project_data[
+                    result['project_member_id']]['data'] = final_data
         return self.project_data
 
     @classmethod

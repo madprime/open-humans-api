@@ -52,7 +52,7 @@ def set_log_level(debug, verbose):
 @click.option('--memberlist', help='Text file with whitelist IDs to retrieve')
 @click.option('--excludelist', help='Text file with blacklist IDs to avoid')
 @click.option('--id-filename', is_flag=True,
-               help='Prepend filenames with IDs to ensure uniqueness.')
+              help='Prepend filenames with IDs to ensure uniqueness.')
 def download_cli(directory, master_token=None, member=None, access_token=None,
                  source=None, project_data=False, max_size='128m',
                  verbose=False, debug=False, memberlist=None,
@@ -69,7 +69,8 @@ def download_cli(directory, master_token=None, member=None, access_token=None,
 
 def download(directory, master_token=None, member=None, access_token=None,
              source=None, project_data=False, max_size='128m', verbose=False,
-             debug=False, memberlist=None, excludelist=None, id_filename=False):
+             debug=False, memberlist=None, excludelist=None,
+             id_filename=False):
     """
     Download data from project members to the target directory.
 
