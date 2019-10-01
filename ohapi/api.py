@@ -410,5 +410,11 @@ def upload_aws(target_filepath, metadata, access_token, base_url=OH_BASE_URL,
     :param max_bytes: This field is the maximum file size a user can upload.
         It's default value is 128m.
     """
-    return upload_file(target_filepath, metadata, access_token, base_url,
-                       remote_file_info, project_member_id, max_bytes)
+    return upload_file(
+        target_filepath=target_filepath,
+        metadata=metadata,
+        access_token=access_token,
+        base_url=base_url,
+        remote_file_info=remote_file_info,
+        project_member_id=project_member_id,
+        max_bytes=max_bytes)

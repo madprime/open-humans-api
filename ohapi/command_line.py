@@ -263,7 +263,7 @@ def upload_metadata(directory, create_csv='', review='',
 
 @click.command()
 @click.option('-d', '--directory',
-              help='Target directory for downloaded files.', required=True)
+              help='Target directory containing uploaded files.', required=True)
 @click.option('--metadata-csv', help='CSV file containing file metadata.',
               required=True)
 @click.option('-T', '--master-token', help='Project master access token.')
